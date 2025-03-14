@@ -118,14 +118,13 @@ class Keyboard:
               and arranged to match a typical keyboard layout.
         """
         formatted_rows = []
-
         for i, row in enumerate(self.rows):
-            leading_spaces = " " * (i * 2) 
+            leading_spaces = " " * (i + (i > 0))
             formatted_row = leading_spaces + " ".join(color_word\
             (self.colors[letter], letter) for letter in row)
             formatted_rows.append(formatted_row)
-
         return "\n".join(formatted_rows)
+
 
 
 class WordFamily:

@@ -67,7 +67,6 @@ class Keyboard:
         self.rows = ("qwertyuiop", "asdfghjkl", "zxcvbnm")
         self.colors = {letter: NO_COLOR for letter in "qwertyuiopasdfghjklzxcvbnm"}
 
-    # TODO: Modify this method. You may delete this comment when you are done.
     def update(self, feedback_colors, guessed_word):
         """
         Updates the color of each letter on the keyboard based on feedback from a guessed word.
@@ -88,7 +87,6 @@ class Keyboard:
         """
         for i, letter in enumerate(guessed_word):
             new_color = feedback_colors[i]
-            
             if new_color == CORRECT_COLOR:
                 self.colors[letter] = CORRECT_COLOR
             elif new_color == WRONG_SPOT_COLOR:
@@ -97,7 +95,6 @@ class Keyboard:
             elif new_color == NOT_IN_WORD_COLOR:
                 if self.colors[letter] == NO_COLOR:
                     self.colors[letter] = NOT_IN_WORD_COLOR
-                        
 
     def __str__(self):
         """
@@ -124,7 +121,8 @@ class Keyboard:
 
         for i, row in enumerate(self.rows):
             leading_spaces = " " * i  
-            formatted_row = leading_spaces + " ".join(color_word(self.colors[letter], letter) for letter in row)
+            formatted_row = leading_spaces + " ".join(color_word\
+            (self.colors[letter], letter) for letter in row)
             formatted_rows.append(formatted_row)
 
         return "\n".join(formatted_rows)
@@ -325,7 +323,6 @@ def fast_sort(lst):
     """
     if len(lst) <= 1:
         return lst
-    
     mid = len(lst) // 2
     left_half = fast_sort(lst[:mid])
     right_half = fast_sort(lst[mid:])
@@ -366,7 +363,6 @@ def get_feedback_colors(secret_word, guessed_word):
     """
     feedback = [NOT_IN_WORD_COLOR] * NUM_LETTERS
     secret_word_list = list(secret_word)
-    
     for i in range(NUM_LETTERS):
         if guessed_word[i] == secret_word[i]:
             feedback[i] = CORRECT_COLOR
@@ -405,7 +401,6 @@ def get_feedback(remaining_secret_words, guessed_word):
     word_families = {}
 
     for word in remaining_secret_words:
-        
         feedback_colors = tuple(get_feedback_colors(word, guessed_word))
         if feedback_colors not in word_families:
             word_families[feedback_colors] = []
@@ -416,7 +411,6 @@ def get_feedback(remaining_secret_words, guessed_word):
     sorted_families = fast_sort(word_family_list)
 
     hardest_family = sorted_families[0]
-        
 
     return hardest_family.feedback_colors, hardest_family.words
 

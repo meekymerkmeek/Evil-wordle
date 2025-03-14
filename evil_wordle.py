@@ -119,12 +119,15 @@ class Keyboard:
         """
         formatted_rows = []
         for i, row in enumerate(self.rows):
-            leading_spaces = " " * (i * 2 - (i == 2))
-            formatted_row = leading_spaces + " ".join(color_word\(self.colors[letter], letter) for letter in row)
+            if i == 0:
+                leading_spaces = ""
+            elif i == 1:
+                leading_spaces = " "
+            else:
+                leading_spaces = "   " 
+            formatted_row = leading_spaces + " ".join(color_word(self.colors[letter], letter) for letter in row)
             formatted_rows.append(formatted_row)
         return "\n".join(formatted_rows)
-
-
 
 class WordFamily:
     """

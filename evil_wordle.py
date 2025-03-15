@@ -124,7 +124,7 @@ class Keyboard:
             elif i == 1:
                 leading_spaces = " "
             else:
-                leading_spaces = "   " 
+                leading_spaces = "   "
             formatted_row = leading_spaces + " ".join(color_word(self.colors[letter], letter)\
             for letter in row)
             formatted_rows.append(formatted_row)

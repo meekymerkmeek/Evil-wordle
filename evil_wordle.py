@@ -125,7 +125,8 @@ class Keyboard:
                 leading_spaces = " "
             else:
                 leading_spaces = "   " 
-            formatted_row = leading_spaces + " ".join(color_word(self.colors[letter], letter) for letter in row)
+                formatted_row = leading_spaces + " ".join\
+                (color_word(self.colors[letter], letter) for letter in row)
             formatted_rows.append(formatted_row)
         return "\n".join(formatted_rows)
 
@@ -331,6 +332,10 @@ def fast_sort(lst):
     return merge(left_half, right_half)
 
 def merge(left, right):
+    """
+    Implementation of merge sort for sorting lists of WordFamily, integers, floats, and
+    strings
+    """
     result = []
     i = j = 0
 
